@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <memory>
 #include <string>
 using namespace std;
@@ -28,31 +28,37 @@ void throw_test() noexcept
 
 void normal_ptr_1()
 {
-	double * pd = new double; // ÎªpdºÍÒ»¸ödoubleÖµ·ÖÅä´æ´¢¿Õ¼ä, ±£´æµØÖ·
-	*pd = 1.0;                // ½«Öµ¸´ÖÆµ½¶¯Ì¬ÄÚ´æÖĞ
-	return;                   // É¾³ıpd, ¶¯Ì¬ÄÚ´æ±£Áô, Öµ±£Áô
+	double * pd = new double; // ä¸ºpdå’Œä¸€ä¸ªdoubleå€¼åˆ†é…å­˜å‚¨ç©ºé—´, ä¿å­˜åœ°å€
+	*pd = 1.0;                // å°†å€¼å¤åˆ¶åˆ°åŠ¨æ€å†…å­˜ä¸­
+	return;                   // åˆ é™¤pd, åŠ¨æ€å†…å­˜ä¿ç•™, å€¼ä¿ç•™
 }
 
 void auto_ptr_1()
 {
-	auto_ptr<double> ap(new double); // ÎªapºÍÒ»¸ödoubleÖµ·ÖÅä´æ´¢¿Õ¼ä, ±£´æµØÖ·
-	*ap = 1.0;                       // ½«Öµ¸´ÖÆµ½¶¯Ì¬ÄÚ´æÖĞ
-	return;                          // É¾³ıpd, apµÄÎö¹¹º¯ÊıÊÍ·Å¶¯Ì¬ÄÚ´æ
+	auto_ptr<double> ap(new double); // ä¸ºapå’Œä¸€ä¸ªdoubleå€¼åˆ†é…å­˜å‚¨ç©ºé—´, ä¿å­˜åœ°å€
+	*ap = 1.0;                       // å°†å€¼å¤åˆ¶åˆ°åŠ¨æ€å†…å­˜ä¸­
+	return;                          // åˆ é™¤pd, apçš„ææ„å‡½æ•°é‡Šæ”¾åŠ¨æ€å†…å­˜
+}
+
+unique_ptr<string> demo(const char* s)
+{
+	unique_ptr<string> temp(new string(s));
+	return temp;
 }
 
 int main()
 {
-	// ÓĞÄÚ´æĞ¹Â¶µÄĞ´·¨
+	// æœ‰å†…å­˜æ³„éœ²çš„å†™æ³•
 	/*normal_ptr_1();
 	_CrtDumpMemoryLeaks();*/
-	// Ê¹ÓÃÖÇÄÜÖ¸Õë, Ã»ÓĞÄÚ´æĞ¹Â¶µÄĞ´·¨
+	// ä½¿ç”¨æ™ºèƒ½æŒ‡é’ˆ, æ²¡æœ‰å†…å­˜æ³„éœ²çš„å†™æ³•
 	/*auto_ptr_1();
 	_CrtDumpMemoryLeaks();*/
 
 	//{
 	//	Report* ptr = new Report("using auto_ptr");
-	//	auto_ptr<Report> ps = ptr; // ²»ÔÊĞíÒşÊ½ÀàĞÍ×ª»»
-	//	auto_ptr<Report> ps(ptr);  // ÕıÈ·Ğ´·¨
+	//	auto_ptr<Report> ps = ptr; // ä¸å…è®¸éšå¼ç±»å‹è½¬æ¢
+	//	auto_ptr<Report> ps(ptr);  // æ­£ç¡®å†™æ³•
 	//	ps->comment();
 	//}
 
@@ -76,23 +82,75 @@ int main()
 		auto_ptr<string> ps(&teststr);
 	}*/
 
-	{
-		auto_ptr<string> film[2] = 
+	//{
+	//	auto_ptr<string> film[2] = 
+	//	{
+	//		auto_ptr<string> (new string("1")),
+	//		auto_ptr<string>(new string("2"))
+	//	};
+	//	auto_ptr<string> ps;
+	//	ps = film[1];
+	//	// film[1].reset();
+	//	
+	//	// cout << *film[1] << endl; // è¿™ä¸€å¥ä¼šå‡ºé”™
+	//	// åœ¨è¯­å¥ ps = film[1] ä¸­, film[1] çš„æ‰€æœ‰æƒè½¬è®©ç»™äº† psï¼Œ å…¶å®è·Ÿ film[1].reset() æœ¬è´¨ä¸Šçš„æ•ˆæœä¸€æ ·
+	//	// è™½ç„¶è¿˜å¯ä»¥ç”¨æ¥è®¿é—®ï¼Œä½†æ˜¯å› ä¸ºé‡Œé¢æ˜¯ç©ºçš„ï¼Œæ‰€ä»¥æ‰“å°ä¼šå‡ºé”™
+
+	//	// ä½†æ˜¯æˆ‘ä»¬å¯¹å®ƒé‡æ–°èµ‹å€¼, ç›¸å½“äºæŠ¢äº†ä¸€ä¸ªæ–°çš„ auto_ptr çš„æ‰€æœ‰æƒ
+	//	film[1] = (auto_ptr<string>)(new string("3"));
+	//	cout << *film[1] << endl;
+ //	}
+
+	// shared_ptr å› ä¸ºä½¿ç”¨çš„æ˜¯å¼•ç”¨è®¡æ•°æœºåˆ¶, æ‰€ä»¥å°±æ²¡æœ‰é—®é¢˜
+	//{
+	//	shared_ptr<string> film[2] =
+	//	{
+	//		shared_ptr<string>(new string("1")),
+	//		shared_ptr<string>(new string("2"))
+	//	};
+	//	shared_ptr<string> ps;
+	//	ps = film[1];
+
+	//	cout << *film[1] << endl;
+	//	cout << ps.use_count() << " " << ps.unique() << endl; 
+	//	cout << film[1].use_count() << " " << film[1].unique() << endl;
+	//	cout << film[0].use_count() << " " << film[0].unique() << endl;
+	//}
+
+	/*{
+		unique_ptr<string> film[2] = 
 		{
-			auto_ptr<string> (new string("1")),
-			auto_ptr<string>(new string("2"))
+			unique_ptr<string> (new string("1")),
+			unique_ptr<string>(new string("2"))
 		};
-		auto_ptr<string> ps;
+		unique_ptr<string> ps;
 		ps = film[1];
-		
-		// cout << *film[1] << endl; // ÕâÒ»¾ä»á³ö´í
-		// ÔÚÓï¾ä ps = film[1] ÖĞ, film[1] µÄËùÓĞÈ¨×ªÈÃ¸øÁË ps, ËäÈ»»¹¿ÉÒÔÓÃÀ´·ÃÎÊ£¬µ«ÊÇÒòÎªÀïÃæÊÇ¿ÕµÄ£¬ËùÒÔ´òÓ¡»á³ö´í
+ 	}*/
 
-		// µ«ÊÇÎÒÃÇ¶ÔËüÖØĞÂ¸³Öµ, ÔÚ
-		film[1] = (auto_ptr<string>)(new string("3"));
-		cout << *film[1] << endl;
- 	}
+	//// unique æ”¯æŒå³å€¼èµ‹å€¼
+	//// å› ä¸ºå³å€¼å¾ˆå¿«èƒ½è¢«é”€æ¯
+	//{
+	//	unique_ptr<string> ps;
+	//	ps = demo("demo");
+	//	cout << *ps << endl;
 
+	//	unique_ptr<string> ps2(new string("123"));
+	//	cout << *ps2 << endl;
+	//}
+
+	// unique_ptr è¿˜æ”¯æŒ new[] æ“ä½œ, å¯¹åº”çš„ä»£ç ä¸­æœ‰ delete[] æ“ä½œ
+	{
+		unique_ptr<double[]> pdouble(new double[4] {1,2,3,4});
+		cout << pdouble[3] << endl;
+
+		// auto_ptr<double[]> auto_p(new double[4]{ 1,2,3,4 }); // è¿™æ ·å†™ç›´æ¥ä¼šç¼–è¯‘ä¸é€šè¿‡
+
+		double* double_array = new double[4]{ 100,200,300,400 };
+		auto_ptr<double> auto_p = auto_ptr<double>(double_array); // è™½ç„¶è¿™ä¹ˆå¼ºè¡Œè½¬æ˜¯å¯è¡Œçš„
+		// cout << auto_p[0] << endl; 1. æ²¡åŠæ³•ä½œä¸ºæ•°ç»„ä½¿ç”¨, è¿™é‡Œå…¶å®å°±ç›¸å½“äºä¸€ä¸ª double çš„æŒ‡é’ˆ
+		// delete[] double_array; // å› ä¸º double_array çš„å…¶ä»–å†…å®¹éœ€è¦åˆ é™¤, è¦ä¹ˆé‡å¤åˆ é™¤, è¦ä¹ˆå†…å­˜æ³„éœ²
+		// ä½†æ˜¯ new[] ä¼¼ä¹ _Crt æµ‹ä¸å‡ºæ¥
+	}
 }
 
 
