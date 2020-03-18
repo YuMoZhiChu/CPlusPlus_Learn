@@ -1,15 +1,15 @@
-//#include<iostream>
+ï»¿//#include<iostream>
 //using namespace std;
 //
-//// C++11 Ìá¹©ÁËÓÃÊ¡ÂÔºÅ±íÊ¾Ò»¸ö²ÎÊı°ü, Í¨¹ıµİ¹é¶¨ÒåµÄ·½Ê½½øĞĞ½â°ü¶ÁÈ¡
+//// C++11 æä¾›äº†ç”¨çœç•¥å·è¡¨ç¤ºä¸€ä¸ªå‚æ•°åŒ…, é€šè¿‡é€’å½’å®šä¹‰çš„æ–¹å¼è¿›è¡Œè§£åŒ…è¯»å–
 //template<typename T, typename... Args>
 //void show_list(const T& value, const Args&... args)
 //{
 //	cout << value << " ";
-//	show_list(args...); // µİ¹éµ÷ÓÃ
+//	show_list(args...); // é€’å½’è°ƒç”¨
 //}
 //
-//// ×îºóµ÷ÓÃ½â°ü
+//// æœ€åè°ƒç”¨è§£åŒ…
 //template<typename T>
 //void show_list(const T& value)
 //{

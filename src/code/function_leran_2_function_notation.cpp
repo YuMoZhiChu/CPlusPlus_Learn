@@ -1,4 +1,4 @@
-//#include<iostream>
+ï»¿//#include<iostream>
 //#include<list>
 //#include<iterator>
 //#include<algorithm>
@@ -17,7 +17,7 @@
 //{
 //	{
 //		list<int> list_1 = { 1,2,3,4,5,6 };
-//		// ÕâÀï´«Ò»¸ö ÊµÏÖÁË operator()() µÄÀàÒ²¿ÉÒÔ, ×¢Òâº¯Êı±êÖ¾ÒªÒ»ÖÂ
+//		// è¿™é‡Œä¼ ä¸€ä¸ª å®ç°äº† operator()() çš„ç±»ä¹Ÿå¯ä»¥, æ³¨æ„å‡½æ•°æ ‡å¿—è¦ä¸€è‡´
 //		list_1.remove_if(CutOff);
 //		cout << "" << endl;
 //	}
@@ -28,7 +28,7 @@
 //	}
 //	{
 //		list<int> list_1 = { 1,2,3,4,5,6 };
-//		// ÀàËÆµÄ¹¦ÄÜÓĞ bind1st
+//		// ç±»ä¼¼çš„åŠŸèƒ½æœ‰ bind1st
 //		list_1.remove_if(bind2nd(greater<int>(),3));
 //		cout << "" << endl;
 //	}

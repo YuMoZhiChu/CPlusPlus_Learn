@@ -1,4 +1,4 @@
-//#include<iostream>
+ï»¿//#include<iostream>
 //using namespace std;
 //
 //class A {};
@@ -6,10 +6,10 @@
 //int main()
 //{
 //	{
-//		auto upw1(make_unique<A>()); // Ê¹ÓÃ make
-//		unique_ptr<A> upw2(new A()); // Ê¹ÓÃ new
+//		auto upw1(make_unique<A>()); // ä½¿ç”¨ make
+//		unique_ptr<A> upw2(new A()); // ä½¿ç”¨ new
 //
-//		auto spw1(make_shared<A>()); // Ê¹ÓÃ make
-//		shared_ptr<A> spw2(new A()); // Ê¹ÓÃ new
+//		auto spw1(make_shared<A>()); // ä½¿ç”¨ make
+//		shared_ptr<A> spw2(new A()); // ä½¿ç”¨ new
 //	}
 //}

@@ -1,4 +1,4 @@
-//#include<iostream>
+ï»¿//#include<iostream>
 //#include<vector>
 //#include<algorithm>
 //#include<cmath>
@@ -13,16 +13,16 @@
 //		srand(0);
 //		generate(numbers.begin(), numbers.end(), rand);
 //
-//		// Ê¹ÓÃº¯ÊıÖ¸Õë¶Ô number ×öÉ¸Ñ¡
+//		// ä½¿ç”¨å‡½æ•°æŒ‡é’ˆå¯¹ number åšç­›é€‰
 //		cout << count_if(numbers.begin(), numbers.end(), f_mod3_0) << endl;
-//		// Ê¹ÓÃ lambda ±í´ïÊÇ
+//		// ä½¿ç”¨ lambda è¡¨è¾¾æ˜¯
 //		cout << count_if(numbers.begin(), numbers.end(),
 //			[](int x) {return x % 3 == 0; })
 //			<< endl;
-//		// ÔÚÕâÀï, ÒòÎªÖ»ÓĞÒ»ĞĞÓï¾ä, ËùÒÔ±à¼­Æ÷ÓÃ decltype() À´ÍÆ¶Ï³ö·µ»ØÖµµÄÀàĞÍ ²»È»ÒªĞ´³É []->bool(){} µÄĞÎÊÆ
+//		// åœ¨è¿™é‡Œ, å› ä¸ºåªæœ‰ä¸€è¡Œè¯­å¥, æ‰€ä»¥ç¼–è¾‘å™¨ç”¨ decltype() æ¥æ¨æ–­å‡ºè¿”å›å€¼çš„ç±»å‹ ä¸ç„¶è¦å†™æˆ []->bool(){} çš„å½¢åŠ¿
 //	}
 //	{
-//		// lambda ¿ÉÒÔÖ±½Ó´æ´¢ÆğÀ´
+//		// lambda å¯ä»¥ç›´æ¥å­˜å‚¨èµ·æ¥
 //		auto my_mod_lambda = [](int x) {return x % 3 == 0; };
 //
 //		vector<int> numbers(100);

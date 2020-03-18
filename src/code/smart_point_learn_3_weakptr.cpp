@@ -1,11 +1,11 @@
-//#include<iostream>
+﻿//#include<iostream>
 //using namespace std;
 //
 //weak_ptr<int> gw;
 //
 //void f()
 //{
-//	if (auto spt = gw.lock()) { // ʹ��֮ǰ���븴�Ƶ� shared_ptr
+//	if (auto spt = gw.lock()) { // 使用之前必须复制到 shared_ptr
 //		std::cout << *spt << "\n";
 //	}
 //	else {

@@ -1,7 +1,7 @@
-//#include<iostream>
+ï»¿//#include<iostream>
 //using namespace std;
 //
-//// º¯ÊıÄ£°å
+//// å‡½æ•°æ¨¡æ¿
 //template <typename AnyType>
 //void Swap(AnyType& a, AnyType& b)
 //{
@@ -13,7 +13,7 @@
 //
 //int intR_f() { return 0; }
 //
-//// ÒòÎªdecltype ÔÚ²ÎÊıÉùÃ÷ºóÃæ, ËùÒÔÔÚ a,b µÄ×÷ÓÃÇøÄÚ, ·µ»ØÖ¸¶¨µÄ·µ»ØÖµÀàĞÍ
+//// å› ä¸ºdecltype åœ¨å‚æ•°å£°æ˜åé¢, æ‰€ä»¥åœ¨ a,b çš„ä½œç”¨åŒºå†…, è¿”å›æŒ‡å®šçš„è¿”å›å€¼ç±»å‹
 //template <typename T>
 //auto Sum(T& a, T& b) -> decltype(a + b)
 //{
@@ -24,14 +24,14 @@
 //{
 //	{
 //		int x;
-//		decltype(x) y; // decltype ÄÜÈÃyµÄÀàĞÍÎª (±í´ïÊ½) ÖĞµÄÀàĞÍ
+//		decltype(x) y; // decltype èƒ½è®©yçš„ç±»å‹ä¸º (è¡¨è¾¾å¼) ä¸­çš„ç±»å‹
 //		cout << "This is a test" << endl;
 //	}
 //
 //	{
 //		int x = 0;
 //		float y = 1;
-//		decltype(x + y) xpy = x + y;// ÕâÀïÒòÎªÊÇ x+y »á×ª»»Îª float, ËùÒÔ xpy µÄÀàĞÍÎª float
+//		decltype(x + y) xpy = x + y;// è¿™é‡Œå› ä¸ºæ˜¯ x+y ä¼šè½¬æ¢ä¸º float, æ‰€ä»¥ xpy çš„ç±»å‹ä¸º float
 //		cout << "This is a test" << endl;
 //	}
 //
@@ -61,7 +61,7 @@
 //		int &n = j;
 //		decltype(j + 6) i1;
 //		decltype(100L) i2;
-//		decltype(k + n) i3;// ÕâÀï k ºÍ n ËäÈ»¶¼ÊÇÒıÓÃ, µ«ÊÇËûÃÇ¼ÓÆğÀ´µÄ±í´ïÊ½²»ÊÇ, ÊÇint
+//		decltype(k + n) i3;// è¿™é‡Œ k å’Œ n è™½ç„¶éƒ½æ˜¯å¼•ç”¨, ä½†æ˜¯ä»–ä»¬åŠ èµ·æ¥çš„è¡¨è¾¾å¼ä¸æ˜¯, æ˜¯int
 //		cout << "This is a test" << endl;
 //	}
 //}

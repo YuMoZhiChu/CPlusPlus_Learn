@@ -1,4 +1,4 @@
-//#include<iostream>
+ï»¿//#include<iostream>
 //using namespace std;
 //
 //
@@ -16,17 +16,17 @@
 //	cout << "A Implatement of template function" << endl;
 //}
 //
-//// Ä£°åÖÐ, ¿ÉÒÔ¶à´øÒ»¸ö ·ÇÀàÐÍ»òÕß±í´ïÊ½²ÎÊý
+//// æ¨¡æ¿ä¸­, å¯ä»¥å¤šå¸¦ä¸€ä¸ª éžç±»åž‹æˆ–è€…è¡¨è¾¾å¼å‚æ•°
 //template <typename Type, int n>
 //class A
 //{};
 //
-//// Ä£°åÒ²¿ÉÒÔÉè¶¨Ä¬ÈÏ²ÎÊýÀàÐÍ
+//// æ¨¡æ¿ä¹Ÿå¯ä»¥è®¾å®šé»˜è®¤å‚æ•°ç±»åž‹
 //template <typename Type, typename Type2 = float>
 //class B
 //{};
 //
-//// Ê¹ÓÃ sort_for_A À´´úÌæÄ£°åµÄÊ¹ÓÃ, using ÊÇ C++11 µÄÐÂÓÃ·¨, ÔÚÒ»¶¨³Ì¶ÈÉÏ = typedef
+//// ä½¿ç”¨ sort_for_A æ¥ä»£æ›¿æ¨¡æ¿çš„ä½¿ç”¨, using æ˜¯ C++11 çš„æ–°ç”¨æ³•, åœ¨ä¸€å®šç¨‹åº¦ä¸Š = typedef
 //template <typename Type>
 //using sort_for_A = A<Type, 10>;
 //
@@ -35,11 +35,11 @@
 //	{
 //		A<double, 12> a1;
 //		A<double, 13> a2;
-//		// ÔÚÕâÀï a1 ºÍ a2 ÊÇÊôÓÚÁ½¸ö²»Í¬µÄÀà
-//		// Õâ¸ö¹¦ÄÜ¾Í±È½Ï¼¦ÀßÁË
+//		// åœ¨è¿™é‡Œ a1 å’Œ a2 æ˜¯å±žäºŽä¸¤ä¸ªä¸åŒçš„ç±»
+//		// è¿™ä¸ªåŠŸèƒ½å°±æ¯”è¾ƒé¸¡è‚‹äº†
 //	}
 //	{
-//		// Ïàµ±ÓÚ A<int, 10> a;
+//		// ç›¸å½“äºŽ A<int, 10> a;
 //		sort_for_A<int> a;
 //	}
 //}

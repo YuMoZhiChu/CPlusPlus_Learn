@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<utility>
 using namespace std;
 
@@ -13,13 +13,13 @@ public:
 	Useless();
 	explicit Useless(int k);
 	Useless(int k, char ch);
-	Useless(const Useless & f); // ³£¹æµÄ¿½±´¹¹Ôìº¯Êı
-	Useless(Useless && f); // ÒÆ¶¯¹¹Ôìº¯Êı
+	Useless(const Useless & f); // å¸¸è§„çš„æ‹·è´æ„é€ å‡½æ•°
+	Useless(Useless && f); // ç§»åŠ¨æ„é€ å‡½æ•°
 	~Useless();
 	Useless operator+(const Useless & f) const;
 	void ShowData() const;
 
-	// ¶¨ÒåÒıÓÃ¸³Öµ ºÍ ÒÆ¶¯¸³Öµ
+	// å®šä¹‰å¼•ç”¨èµ‹å€¼ å’Œ ç§»åŠ¨èµ‹å€¼
 	Useless & operator=(const Useless & f);
 	Useless & operator=(Useless && f);
 
@@ -32,14 +32,14 @@ Useless::Useless()
 	++ct;
 	n = 0;
 	pc = nullptr;
-	cout << "Ê¹ÓÃ  ³õÊ¼  ¹¹ÔìÆ÷µÄµ÷ÓÃ, µ±Ç° Useless µÄ¸öÊı " << ct << endl;
+	cout << "ä½¿ç”¨  åˆå§‹  æ„é€ å™¨çš„è°ƒç”¨, å½“å‰ Useless çš„ä¸ªæ•° " << ct << endl;
 	ShowObject();
 }
 
 Useless::Useless(int k): n(k)
 {
 	++ct;
-	cout << "Ê¹ÓÃ  int  ¹¹ÔìÆ÷µÄµ÷ÓÃ, µ±Ç° Useless µÄ¸öÊı " << ct << endl;
+	cout << "ä½¿ç”¨  int  æ„é€ å™¨çš„è°ƒç”¨, å½“å‰ Useless çš„ä¸ªæ•° " << ct << endl;
 	pc = new char[n];
 	ShowObject();
 }
@@ -47,7 +47,7 @@ Useless::Useless(int k): n(k)
 Useless::Useless(int k, char ch) : n(k)
 {
 	++ct;
-	cout << "Ê¹ÓÃ  int,char  ¹¹ÔìÆ÷µÄµ÷ÓÃ, µ±Ç° Useless µÄ¸öÊı " << ct << endl;
+	cout << "ä½¿ç”¨  int,char  æ„é€ å™¨çš„è°ƒç”¨, å½“å‰ Useless çš„ä¸ªæ•° " << ct << endl;
 	pc = new char[n];
 	for (int i = 0; i < n; ++i)
 		pc[i] = ch;
@@ -57,7 +57,7 @@ Useless::Useless(int k, char ch) : n(k)
 Useless::Useless(const Useless & f) : n(f.n)
 {
 	++ct;
-	cout << "Ê¹ÓÃ  ÒıÓÃ  ¹¹ÔìÆ÷µÄµ÷ÓÃ, µ±Ç° Useless µÄ¸öÊı " << ct << endl;
+	cout << "ä½¿ç”¨  å¼•ç”¨  æ„é€ å™¨çš„è°ƒç”¨, å½“å‰ Useless çš„ä¸ªæ•° " << ct << endl;
 	pc = new char[n];
 	for (int i = 0; i < n; ++i)
 		pc[i] = f.pc[i];
@@ -67,7 +67,7 @@ Useless::Useless(const Useless & f) : n(f.n)
 Useless::Useless(Useless && f) : n(f.n)
 {
 	++ct;
-	cout << "Ê¹ÓÃ  ÓÒÖµ  ¹¹ÔìÆ÷µÄµ÷ÓÃ, µ±Ç° Useless µÄ¸öÊı " << ct << endl;
+	cout << "ä½¿ç”¨  å³å€¼  æ„é€ å™¨çš„è°ƒç”¨, å½“å‰ Useless çš„ä¸ªæ•° " << ct << endl;
 	pc = f.pc;
 	f.pc = nullptr;
 	f.n = 0;
@@ -76,35 +76,35 @@ Useless::Useless(Useless && f) : n(f.n)
 
 Useless::~Useless()
 {
-	cout << "Îö¹¹º¯Êıµ÷ÓÃ, Ê£ÏÂÎïÌå¸öÊı " << --ct << endl;
-	cout << "É¾³ıÎïÌå: " << endl;
+	cout << "ææ„å‡½æ•°è°ƒç”¨, å‰©ä¸‹ç‰©ä½“ä¸ªæ•° " << --ct << endl;
+	cout << "åˆ é™¤ç‰©ä½“: " << endl;
 	ShowObject();
 	delete[] pc;
 }
 
 Useless Useless::operator+(const Useless & f) const
 {
-	cout << " ½øÈë¶¨ÒåµÄ + º¯Êı" << endl;
+	cout << " è¿›å…¥å®šä¹‰çš„ + å‡½æ•°" << endl;
 	Useless temp = Useless(n + f.n);
 	for (int i = 0; i < n; i++)
 		temp.pc[i] = pc[i];
 	for (int i = n; i < temp.n; i++)
 		temp.pc[i] = f.pc[i - n];
 	cout << "temp object:\n";
-	cout << " Àë¿ª¶¨ÒåµÄ + º¯Êı" << endl;
+	cout << " ç¦»å¼€å®šä¹‰çš„ + å‡½æ•°" << endl;
 	return temp;
 }
 
 void Useless::ShowObject() const
 {
-	cout << "ÓĞ¶àÉÙ¸öÔªËØ" << n;
-	cout << " Êı¾İµØÖ·  " << (void*)pc << endl;
+	cout << "æœ‰å¤šå°‘ä¸ªå…ƒç´ " << n;
+	cout << " æ•°æ®åœ°å€  " << (void*)pc << endl;
 }
 
 void Useless::ShowData() const
 {
 	if (n == 0)
-		cout << "¿ÕµÄ object";
+		cout << "ç©ºçš„ object";
 	else
 		for (int i = 0; i < n; i++)
 			cout << pc[i];
@@ -113,7 +113,7 @@ void Useless::ShowData() const
 
 Useless & Useless::operator=(const Useless & f)
 {
-	cout << "=========½øÈëÒıÓÃ¸³Öµº¯Êı" << endl;
+	cout << "=========è¿›å…¥å¼•ç”¨èµ‹å€¼å‡½æ•°" << endl;
 	if (this == &f)
 		return *this;
 	delete[]pc;
@@ -126,7 +126,7 @@ Useless & Useless::operator=(const Useless & f)
 
 Useless & Useless::operator=(Useless && f)
 {
-	cout << "=========½øÈëÒÆ¶¯¸³Öµº¯Êı" << endl;
+	cout << "=========è¿›å…¥ç§»åŠ¨èµ‹å€¼å‡½æ•°" << endl;
 	if (this == &f)
 		return *this;
 	delete[]pc;
@@ -141,13 +141,13 @@ int main()
 {
 	//{
 	//	Useless one(10, 'x');
-	//	Useless two = one;      // ÕâÀïµ÷ÓÃµÄÊÇ ¿½±´¹¹Ôìº¯Êı Ò²¾ÍÊÇÒıÓÃ
+	//	Useless two = one;      // è¿™é‡Œè°ƒç”¨çš„æ˜¯ æ‹·è´æ„é€ å‡½æ•° ä¹Ÿå°±æ˜¯å¼•ç”¨
 	//	Useless three(20, 'o');
-	//	Useless four(one + three); // 1. µ÷ÓÃ operator+ 2. º¯ÊıµÄ·µ»ØÖµ×÷ÎªÓÒÖµ µ÷ÓÃÓÒÖµ¹¹Ôìº¯Êı
+	//	Useless four(one + three); // 1. è°ƒç”¨ operator+ 2. å‡½æ•°çš„è¿”å›å€¼ä½œä¸ºå³å€¼ è°ƒç”¨å³å€¼æ„é€ å‡½æ•°
 
-	//	// Èç¹ûÊÇÔÚ C++98 µÄ¶¨ÒåÖĞ, »òÕß°Ñ ÒÆ¶¯¹¹Ôì×¢ÊÍ
-	//	// Useless four(one + three) µÄµÚ¶ş²½ »á×ßÒıÓÃ¹¹Ôìº¯Êı ÒòÎª const ÒıÓÃ»úÖÆ, Èç¹ûÀàĞÍ²»Æ¥Åä, ¾Í»áÉú³É ÁÙÊ±±äÁ¿
-	//	// ÔÚ¾É°æµÄ C++98 ÖĞ, »¹»á³öÏÖ¶àÒ»´Î Useless µÄÁÙÊ±¹¹Ôì, ÕâÀïÓ¦¸ÃÊÇ±à¼­Æ÷°ïÃ¦ÓÅ»¯ÁË
+	//	// å¦‚æœæ˜¯åœ¨ C++98 çš„å®šä¹‰ä¸­, æˆ–è€…æŠŠ ç§»åŠ¨æ„é€ æ³¨é‡Š
+	//	// Useless four(one + three) çš„ç¬¬äºŒæ­¥ ä¼šèµ°å¼•ç”¨æ„é€ å‡½æ•° å› ä¸º const å¼•ç”¨æœºåˆ¶, å¦‚æœç±»å‹ä¸åŒ¹é…, å°±ä¼šç”Ÿæˆ ä¸´æ—¶å˜é‡
+	//	// åœ¨æ—§ç‰ˆçš„ C++98 ä¸­, è¿˜ä¼šå‡ºç°å¤šä¸€æ¬¡ Useless çš„ä¸´æ—¶æ„é€ , è¿™é‡Œåº”è¯¥æ˜¯ç¼–è¾‘å™¨å¸®å¿™ä¼˜åŒ–äº†
 
 	//	cout << "              " << endl;
 
@@ -155,17 +155,17 @@ int main()
 	//{
 	//	Useless one(10, 'x');
 	//	Useless two;
-	//	two = one; // ÒıÓÃ¸³Öµ
+	//	two = one; // å¼•ç”¨èµ‹å€¼
 	//	Useless three;
-	//	three = one + two; // ÒÆ¶¯¸³Öµ
+	//	three = one + two; // ç§»åŠ¨èµ‹å€¼
 	//}
 	{
 		Useless one(10, 'x');
 		Useless two;
-		two = one; // ÒıÓÃ¸³Öµ
+		two = one; // å¼•ç”¨èµ‹å€¼
 		one.ShowData();
-		two = move(one); // Ç¿ÖÆÒÆ¶¯¸³Öµ
-		// Èç¹ûÃ»ÓĞ¶¨Òå ÒÆ¶¯¸³Öµ º¯Êı, »áµ÷ÓÃÒıÓÃ¸³Öµ ÒòÎª const ÒıÓÃ»úÖÆ, Èç¹ûÀàĞÍ²»Æ¥Åä, ¾Í»áÉú³É ÁÙÊ±±äÁ¿
+		two = move(one); // å¼ºåˆ¶ç§»åŠ¨èµ‹å€¼
+		// å¦‚æœæ²¡æœ‰å®šä¹‰ ç§»åŠ¨èµ‹å€¼ å‡½æ•°, ä¼šè°ƒç”¨å¼•ç”¨èµ‹å€¼ å› ä¸º const å¼•ç”¨æœºåˆ¶, å¦‚æœç±»å‹ä¸åŒ¹é…, å°±ä¼šç”Ÿæˆ ä¸´æ—¶å˜é‡
 		one.ShowData();
 	}
 }
