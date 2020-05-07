@@ -157,11 +157,12 @@
 //	//	// 但是 new[] 似乎 _Crt 测不出来
 //	//}
 //
-//	//{
-//	//	unique_ptr<int> pup(make_int(123));
-//	//	//shared_ptr<int> pup2(pup); 这一句不能通过, 因为 shared_ptr 不支持该赋值操作
-//	//	shared_ptr<int> pup3(make_int(123));
-//	//}
+//	{
+//		unique_ptr<int> pup(make_int(123));
+//		// shared_ptr<int> pup2(pup); // 这一句不能通过, 因为 shared_ptr 不支持该赋值操作
+//		shared_ptr<int> pup3 = move(pup);
+//		shared_ptr<int> pup4(make_int(123));
+//	}
 //}
 //
 //

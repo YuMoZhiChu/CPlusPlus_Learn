@@ -29,8 +29,8 @@
 //int main()
 //{
 //	{
-//		//make_unique<A>(1, 2, 3);
-//		// my_make_unique<A>(2, 3, 4);
+//		unique_ptr<A> p = make_unique<A>(1, 2, 3);
+//		my_make_unique<A>(2, 3, 4);
 //
 //		test_unpack(1, 2, 3);
 //	}

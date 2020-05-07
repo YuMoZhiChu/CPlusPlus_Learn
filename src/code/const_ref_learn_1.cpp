@@ -37,7 +37,7 @@
 //	// prats_3_const_ptr = &rats_3; const 类型的变量无法修改
 //	// int & rodents_3; // 在初始化时，必须与某个变量关联起来
 //	// int * const prats_3_const_ptr; // 在初始化时, 因为这是 const 的指针, 所以必须有初始化
-//	int & rodents_3 = *prats_3_const_ptr; // 引用在某种程度上和 const 引用相似
+//	int & rodents_3 = *prats_3_const_ptr; // 引用在某种程度上和 const 指针相似
 //
 //	int rats_4 = 101;
 //	int * pt_4 = &rats_4;

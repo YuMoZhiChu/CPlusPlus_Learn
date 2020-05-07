@@ -29,7 +29,8 @@
 //	{
 //		list<int> list_1 = { 1,2,3,4,5,6 };
 //		// 类似的功能有 bind1st
-//		list_1.remove_if(bind2nd(greater<int>(),3));
+//		list_1.remove_if(bind2nd(greater<int>(),3)); // list_1 = 1,2,3
+//		// list_1.remove_if(bind1st(greater<int>(), 3)); // list_1 = 3,4,5,6
 //		cout << "" << endl;
 //	}
 //}
