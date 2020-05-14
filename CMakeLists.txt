@@ -42,6 +42,24 @@ file(GLOB_RECURSE HEADFILE
 	"src/code/*.h"
 )
 
+# prime_learn_code 下的内容 这一部分是 C++ Prime 的读书笔记, 以及课后习题
+file(GLOB_RECURSE PRIME_LEARN_CODE_CPPFILE
+	"src/prime_learn_code/*.cpp"
+)
+
+file(GLOB_RECURSE PRIME_LEARN_CODE_HEADFILE
+	"src/prime_learn_code/*.h"
+)
+
+# my_comment_source 下的内容 这一部分是我对源码文件的拷贝, 然后会在里面写一些理解性的注释
+file(GLOB_RECURSE MY_COMMENT_SOURCE_CPPFILE
+	"src/my_comment_source/*.cpp"
+)
+
+file(GLOB_RECURSE MY_COMMENT_SOURCE_HEADFILE
+	"src/my_comment_source/*.h"
+)
+
 # 接入 md 文件
 file(GLOB_RECURSE MARKDOWNFILE
 	"doc/*.md"
@@ -60,9 +78,9 @@ message("#### all H files:")
 foreach(F ${HEADFILE})
      message(${F})
 endforeach(F)
-add_executable(CPlusPlus_Learn ${CPPFILE} ${HEADFILE} ${MARKDOWNFILE} ${NOTE_MARKDOWNFILE})
+add_executable(CPlusPlus_Learn ${CPPFILE} ${HEADFILE} ${PRIME_LEARN_CODE_CPPFILE} ${PRIME_LEARN_CODE_HEADFILE} ${MY_COMMENT_SOURCE_CPPFILE} ${MY_COMMENT_SOURCE_HEADFILE} ${MARKDOWNFILE} ${NOTE_MARKDOWNFILE})
 
-set(all_files ${HEADFILE} ${CPPFILE})
+set(all_files ${HEADFILE} ${CPPFILE} ${PRIME_LEARN_CODE_CPPFILE} ${PRIME_LEARN_CODE_HEADFILE} ${MY_COMMENT_SOURCE_CPPFILE} ${MY_COMMENT_SOURCE_HEADFILE})
 
 # 添加 定义
 if(MSVC)
