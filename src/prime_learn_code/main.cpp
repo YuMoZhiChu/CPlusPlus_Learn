@@ -1,4 +1,6 @@
-﻿//#include<iostream>
+﻿
+int q = 1;
+//#include<iostream>
 //using namespace std;
 //
 //int main()

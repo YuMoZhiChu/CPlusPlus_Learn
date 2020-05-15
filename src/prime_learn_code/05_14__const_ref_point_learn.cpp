@@ -1,22 +1,15 @@
 ﻿// Example program
 #include <iostream>
 #include <string>
+using namespace std;
+extern int q;
 
 int main()
 {
-
-	int * p = new int(1);
-	const int *const q = p;
-	int* r = q;
-
-	int k = 10;
-	int & l = k;
-	const int & j = l;
-	int & m = j;
-
-	const int a = 1;
-	int b = a;
-
-	*p = 2;
-	std::cout << *q << std::endl;
+	int i = 0, &ri = i;
+	float f = 1.0, &rf = f;
+	ri = 1.0;
+	ri = f;
+	rf = 0;
+	rf = i;
 }
