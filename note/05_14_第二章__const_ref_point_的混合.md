@@ -59,7 +59,7 @@ int main()
 ```
 - 通过 **::** 来访问全局变量
 
-## 第二部分，引用，指针 和 const 的搭配 [复合类型]
+# 第二部分，引用，指针 和 const 的搭配 [复合类型]
 
 ```c++
 int & x;
@@ -200,6 +200,7 @@ const int *const ip2 = &b;
 - 如果指向的内容不是 const，就可以修改
 
 **顶层const**
+
 顶层const更像是一个定义，它把 const 分为两种
 - 顶层const： 变量本身是 const
 - 底层const：变量指向的内容，或者引用的内容 是const
@@ -236,4 +237,85 @@ ic = irc; // 错误，const不能修改
 - 可以转换，一般来说，非常量const可以转换成常量const，这里指的是 const int* 可以指向 int*，其实就是指针的可以不遵守严格匹配的第一个**特殊点**
 
 **constexpr和常量表达式**
-常量表达式是指不会改变，并且在编译
+
+常量表达式是指不会改变，并且在编译过程就能得到计算结果
+```c++
+const int max_files = 20; // 是常量表达式
+const int limit = max_files + 1; // 是常量表达式
+int staff_size = 27; // 不是常量表达式
+const int sz = get_size(); // 不是常量表达式，是常量，但是要运行才能获取
+```
+- c++11 规定，允许将变量声明为 **constexpr** 类型，让编译器来检测是否是常量表达式
+```c++
+constexpr int mf = 20;
+constexpr int limit = mf + 1;
+constexpr int sz = size(); // 如果size不是 constexpr 函数，就会报错
+```
+- constexpr 对于确定的表达一个常量来说，会比const更优，尽量使用。
+- 只有字面值类型才能使用 constexpr，自定义类，std库都不行。（指针和引用尽管可以，但他们只能是 nullptr 或者存储于某个固定地址中的对象
+- constexpr 指针，一定是常量指针
+```
+const int *p = nullptr; // 指向常量的指针
+constexpr int *p = nullptr; // 指向int的 常量指针
+
+// ij在函数体外时成立
+int j = 0;
+constexpr int i = 1;
+constexpr int *p = &j;
+constexpr const int *q = &i;
+// 复习一波底层 const
+constexpr int *p = &i; // 错误，底层const不一致，且不能转换
+constexpr const int *q = &j; // 正确 const* 可以指向 非const的对应类型
+```
+
+### 处理类型
+
+**typedef**
+
+typedef 用于指定类型的别名，但是它有一点会跟我们的主观印象里面，直接替换是不一样的：
+```c++
+typedef char *pstring;
+const pstring cstr = 0; // cstr 的类型是 char *const --- 指向char 的 常量指针
+const char *const_char_p = 0; // const_char_p 的类型是 const char*
+const pstring *ps = 0; // ps 的类型是 char *const * --- 指向char 的 常量指针 的指针
+
+using ustring = char *;
+const ustring ucstr = 0; // ucstr 的类型是 char *const
+const ustring *ucstr_p = 0; // ucstr_p 的类型是 char *const *
+```
+- 这么理解，const pstring 中，const 修饰的是 pstring，而 pstring 是一个指针
+
+**auto**
+
+auto会去推断数据的类型，所以
+- auto定义的变量一定有初始值
+- 对于基本数据类型，会做两点
+- - 忽略 引用
+- - 忽略 顶层const
+- - 如果想要引用，顶层const，在 auto 附近加即可
+```c++
+const int i = 42;
+auto j = i; // j: int
+const auto &k = i; // k: const int&
+auto *p = &i; // i: 这里的 &i 其实可以看做是引用，这里是底层const，或者是理解成，一个指向它的指针，那必须const
+// p: const int*
+const auto j2 = i; &k2 = i// j2: const int, k2: const int&
+```
+
+**decltype**
+
+decltype 支持两种输入
+- 表达式，表达式不会计算，但会得到它的类型
+- 变量，**保留**顶层const和引用（引用都是作为对象的别名出现，只有在这里是例外
+```c++
+int i = 42, *p = &i;
+decltype(*p) a; // 出错，因为这里的结果是 int&
+decltype((i)) b; // 出错，因为 双层括号 的结果 永远是引用
+```
+
+# 第三部分
+
+```
+#define
+```
+- 预处理变量 无视 C++语言中关于作用域的规则
