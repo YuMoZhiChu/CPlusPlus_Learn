@@ -20,8 +20,8 @@
 //	cout << a << b << c << endl;
 //}
 //
-//template<typename... Ts>
-//void test_unpack(Ts... params)
+//template<typename ...Ts>
+//void test_unpack(Ts ...params)
 //{
 //	cout3int(params...);
 //}
