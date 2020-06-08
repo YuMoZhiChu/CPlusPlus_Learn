@@ -13,15 +13,14 @@ vector<string> f()
 		return { "123", "222" }; // 返回列表初始化对象
 }
 
-
+int f1(int a, int b)
+{
+	return a + b;
+}
 
 int main()
 {
-	cout << __func__ << __LINE__ << __FILE__ << endl;
-
-	int a[10] = { 0 };
-	f();
-	EXIT_FAILURE;
-	EXIT_SUCCESS;
+	vector<int(*)(int, int)> v;
+	v.push_back(&f1);
 }
 // 这段程序会输出 1-10 的值
