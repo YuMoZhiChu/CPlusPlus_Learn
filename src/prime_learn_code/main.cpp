@@ -94,12 +94,69 @@ public:
 	T x, y;
 };
 
+template <typename T>
+inline T Mod(T a, T b) {
+	T result = a - (a / b) * b;
+	return (T)((result < 0) ? result + b : result);
+}
+
+// HaltonSampler Utility Functions
+static void extendedGCD(uint64_t a, uint64_t b, int64_t *x, int64_t *y);
+static uint64_t multiplicativeInverse(int64_t a, int64_t n) {
+	int64_t x, y;
+	extendedGCD(a, n, &x, &y);
+	return Mod(x, n);
+}
+
+static void extendedGCD(uint64_t a, uint64_t b, int64_t *x, int64_t *y) {
+	if (b == 0) {
+		*x = 1;
+		*y = 0;
+		return;
+	}
+	int64_t d = a / b, xp, yp;
+	cout << a << " " << b << endl;
+	extendedGCD(b, a % b, &xp, &yp);
+	*x = yp;
+	*y = xp - (d * yp);
+}
+
 
 int main()
 {
-	Point2<float> p1(1.0, 2.0);
-	Point2<float> p2(3.0, 4.0);
+	//Point2<float> p1(1.0, 2.0);
+	//Point2<float> p2(3.0, 4.0);
 
-	std::swap(p1.x, p2.x);
+	//std::swap(p1.x, p2.x);
+
+	//uint8_t a = 240;
+	//uint8_t b = (a << 4) | (a >> 4);
+	//uint8_t c = a << 4;
+
+	int baseScales[2] = { 2,3 };
+	int baseExponents[2] = { 0,0 };
+
+	//for (int i = 0; i < 2; ++i) {
+	//	int base = (i == 0) ? 2 : 3;
+	//	int scale = 1, exp = 0;
+	//	while (scale < 128) {
+	//		scale *= base;
+	//		++exp;
+	//	}
+	//	baseScales[i] = scale;
+	//	baseExponents[i] = exp;
+	//}
+
+	uint64_t result = multiplicativeInverse(baseScales[1], baseScales[0]);
+
+
+	uint64_t result2 = multiplicativeInverse(baseScales[0], baseScales[1]);
+
+	/*float a = 0x1p-64;
+	std::cout << a << std::endl;*/
+
+
+	uint32_t a = 6;
+	a ^= 1;
 
 }
