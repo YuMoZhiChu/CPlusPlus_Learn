@@ -2,6 +2,8 @@
 #include <vector>
 #include <cstdlib>
 #include <time.h>
+#include <stack>
+#include <vector>
 using namespace std;
 
 template <typename T>
@@ -133,8 +135,8 @@ int main()
 	//uint8_t b = (a << 4) | (a >> 4);
 	//uint8_t c = a << 4;
 
-	int baseScales[2] = { 2,3 };
-	int baseExponents[2] = { 0,0 };
+	//int baseScales[2] = { 2,3 };
+	//int baseExponents[2] = { 0,0 };
 
 	//for (int i = 0; i < 2; ++i) {
 	//	int base = (i == 0) ? 2 : 3;
@@ -147,16 +149,28 @@ int main()
 	//	baseExponents[i] = exp;
 	//}
 
-	uint64_t result = multiplicativeInverse(baseScales[1], baseScales[0]);
+	//uint64_t result = multiplicativeInverse(baseScales[1], baseScales[0]);
 
 
-	uint64_t result2 = multiplicativeInverse(baseScales[0], baseScales[1]);
+	//uint64_t result2 = multiplicativeInverse(baseScales[0], baseScales[1]);
 
-	/*float a = 0x1p-64;
-	std::cout << a << std::endl;*/
+	///*float a = 0x1p-64;
+	//std::cout << a << std::endl;*/
 
 
-	uint32_t a = 6;
-	a ^= 1;
+	//uint32_t a = 6;
+	//a ^= 1;
+
+	//std::string::size_type;
+
+	std::string str = "123456";
+	auto find_result = str.find_first_of("24680");
+	std::cout << find_result << std::endl;
+	std::string &str2 = str;
+	
+	stack<int, vector<int>> s;
+	s.push(4);
+	s.push(2);
+	s.pop();
 
 }
