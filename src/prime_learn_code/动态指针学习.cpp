@@ -12,5 +12,11 @@ int main(void)
 		b1 = b2;
 	}
 
+	{
+		allocator<int> alloc;
+		auto p = alloc.allocate(5);
+		cout << p << endl;
+	}
+
 	return 0;
 }
