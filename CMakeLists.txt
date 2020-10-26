@@ -51,6 +51,19 @@ file(GLOB_RECURSE PRIME_LEARN_CODE_HEADFILE
 	"src/prime_learn_code/*.h"
 )
 
+# leetcode_learn_code 下的内容 这一部分是 力扣 的编程练习
+file(GLOB_RECURSE LEETCODE_LEARN_CODE_CPPFILE
+	"src/leetcode_learn_code/*.cpp"
+)
+
+file(GLOB_RECURSE LEETCODE_LEARN_CODE_HEADFILE
+	"src/leetcode_learn_code/*.h"
+)
+
+file(GLOB_RECURSE LEETCODE_LEARN_CODE_MARKDOWNFILE
+	"src/leetcode_learn_code/*.md"
+)
+
 # my_comment_source 下的内容 这一部分是我对源码文件的拷贝, 然后会在里面写一些理解性的注释
 file(GLOB_RECURSE MY_COMMENT_SOURCE_CPPFILE
 	"src/my_comment_source/*.cpp"
@@ -78,9 +91,9 @@ message("#### all H files:")
 foreach(F ${HEADFILE})
      message(${F})
 endforeach(F)
-add_executable(CPlusPlus_Learn ${CPPFILE} ${HEADFILE} ${PRIME_LEARN_CODE_CPPFILE} ${PRIME_LEARN_CODE_HEADFILE} ${MY_COMMENT_SOURCE_CPPFILE} ${MY_COMMENT_SOURCE_HEADFILE} ${MARKDOWNFILE} ${NOTE_MARKDOWNFILE})
+add_executable(CPlusPlus_Learn ${CPPFILE} ${HEADFILE} ${PRIME_LEARN_CODE_CPPFILE} ${PRIME_LEARN_CODE_HEADFILE} ${LEETCODE_LEARN_CODE_CPPFILE} ${LEETCODE_LEARN_CODE_HEADFILE} ${LEETCODE_LEARN_CODE_MARKDOWNFILE} ${MY_COMMENT_SOURCE_CPPFILE} ${MY_COMMENT_SOURCE_HEADFILE} ${MARKDOWNFILE} ${NOTE_MARKDOWNFILE})
 
-set(all_files ${HEADFILE} ${CPPFILE} ${PRIME_LEARN_CODE_CPPFILE} ${PRIME_LEARN_CODE_HEADFILE} ${MY_COMMENT_SOURCE_CPPFILE} ${MY_COMMENT_SOURCE_HEADFILE})
+set(all_files ${HEADFILE} ${CPPFILE} ${PRIME_LEARN_CODE_CPPFILE} ${PRIME_LEARN_CODE_HEADFILE} ${MY_COMMENT_SOURCE_CPPFILE} ${MY_COMMENT_SOURCE_HEADFILE} ${LEETCODE_LEARN_CODE_CPPFILE} ${LEETCODE_LEARN_CODE_HEADFILE})
 
 # 添加 定义
 if(MSVC)
@@ -117,3 +130,10 @@ foreach(F ${NOTE_MARKDOWNFILE})
      message(${F})
 endforeach(F)
 source_group("_markdownNote" FILES ${NOTE_MARKDOWNFILE})
+
+# 装门的力扣笔记
+message("#### all leetcode note - md files:")
+foreach(F ${LEETCODE_LEARN_CODE_MARKDOWNFILE})
+     message(${F})
+endforeach(F)
+source_group("_LeetCodeNote" FILES ${LEETCODE_LEARN_CODE_MARKDOWNFILE})
