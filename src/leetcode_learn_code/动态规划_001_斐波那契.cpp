@@ -1,4 +1,4 @@
-//#include<iostream>
+﻿//#include<iostream>
 //using std::cin;
 //using std::cout;
 //using std::endl;
@@ -11,7 +11,7 @@
 //		return 1;
 //	int fibo_sub_1 = 0, fibo_sub_2 = 1;
 //	int result = 0;
-//	// ѹ��״̬
+//	// 压缩状态
 //	for (int i = 2; i <= number; ++i)
 //	{
 //		result = fibo_sub_1 + fibo_sub_2;
