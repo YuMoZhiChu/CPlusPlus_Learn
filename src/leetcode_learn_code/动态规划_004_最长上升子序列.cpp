@@ -1,16 +1,16 @@
-#include<vector>
+ï»¿#include<vector>
 using std::vector;
 
 class Solution {
 public:
 	int lengthOfLIS(vector<int>& nums) {
 		if (nums.empty()) return 0;
-		// dp[i] ÒÔ nums[i] ½áÎ², ×î´óµÄÉÏÉı×ÓĞòÁĞ µÄ ³¤¶È
+		// dp[i] ä»¥ nums[i] ç»“å°¾, æœ€å¤§çš„ä¸Šå‡å­åºåˆ— çš„ é•¿åº¦
 		const int nums_size = nums.size();
 		int *dp = new int[nums_size]();
-		// Ò»¸öÊı½áÎ², ³¤¶ÈÊÇ 1 - 1, ËùÓĞ³¤¶ÈÓ¦¸Ã³õÊ¼»¯Îª 1, ÕâÀïÎªÁË·½±ã
+		// ä¸€ä¸ªæ•°ç»“å°¾, é•¿åº¦æ˜¯ 1 - 1, æ‰€æœ‰é•¿åº¦åº”è¯¥åˆå§‹åŒ–ä¸º 1, è¿™é‡Œä¸ºäº†æ–¹ä¾¿
 		dp[0] = 0;
-		// n ^ 2 ÏûºÄµÄ±éÀú
+		// n ^ 2 æ¶ˆè€—çš„éå†
 		for (int i = 1; i < nums_size; ++i)
 		{
 			for (int j = 0; j < i; ++j)
@@ -22,14 +22,14 @@ public:
 			}
 		}
 
-		// ±éÀúdp È¡×î´óÖµ
+		// éå†dp å–æœ€å¤§å€¼
 		int max = 0;
 		for (int i = 0; i < nums_size; ++i)
 		{
 			max = dp[i] > max ? dp[i] : max;
 		}
 		delete[] dp;
-		// ²¹ÉÏ¶ªÊ§µÄ 1
+		// è¡¥ä¸Šä¸¢å¤±çš„ 1
 		return max + 1;
 	}
 };
