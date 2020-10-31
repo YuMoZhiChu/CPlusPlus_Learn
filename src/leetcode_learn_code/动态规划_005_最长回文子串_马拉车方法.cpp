@@ -50,6 +50,7 @@ public:
 			if (cur_radius > max_radius)
 			{
 				max_radius = cur_radius;
+				// 这里通过 trick 的方法, 来找到对应的开始位置
 				start_pos = (i - max_radius) / 2;
 			}
 		}

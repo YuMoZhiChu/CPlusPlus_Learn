@@ -1,6 +1,8 @@
 ﻿#include<string>
 using std::string;
 
+#include<hash_set>
+
 class Solution {
 public:
 	int longestPalindromeSubseq(string s) {
@@ -36,9 +38,12 @@ public:
 					}
 				}
 				else {
+					// {X[.....]} 情况, 取右边
 					dp[j][i] = dp[j][i + 1]; // 这是默认初值, 等于上一个结果
+					// {[.....]X} 情况, 取左边
 					if (dp[j - 1][i] > dp[j][i])
 						dp[j][i] = dp[j - 1][i];
+					// {X[.....]X} 情况, 取中间+2
 					if (s[j] == s[i])
 						if (dp[j - 1][i + 1] + 2 > dp[j][i])
 							dp[j][i] = dp[j - 1][i + 1] + 2;
