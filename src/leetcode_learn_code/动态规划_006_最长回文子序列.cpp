@@ -1,8 +1,6 @@
 ﻿#include<string>
 using std::string;
 
-#include<hash_set>
-
 class Solution {
 public:
 	int longestPalindromeSubseq(string s) {
