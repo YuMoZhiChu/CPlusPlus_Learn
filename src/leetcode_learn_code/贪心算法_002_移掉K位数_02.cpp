@@ -9,15 +9,15 @@ using std::string;
 using std::deque;
 
 // 记录每一个节点的信息，重复的压缩起来
-struct NumberNode
+struct NumberNode2
 {
-	NumberNode(char _num_char, int _time) :num_char(_num_char), time(_time) { next = nullptr; }
+	NumberNode2(char _num_char, int _time) :num_char(_num_char), time(_time) { next = nullptr; }
 	char num_char;
 	int time;
-	NumberNode *next; // 指向下一个内容
+	NumberNode2 *next; // 指向下一个内容
 };
 
-void try_merge(NumberNode *head)
+void try_merge(NumberNode2 *head)
 {
 	// 尝试合并头两个数, 因为会出现 2 个数相同的情形
 	while (head->next != nullptr && head->num_char == head->next->num_char)
@@ -31,16 +31,16 @@ class Solution {
 public:
 	string removeKdigits(string num, int k) {
 		if (num.size() <= k) return "0";
-		NumberNode *head = nullptr; // 记录头指针
+		NumberNode2 *head = nullptr; // 记录头指针
 		// 假设 num[0] 一定存在
-		head = new NumberNode(num[0], 1);
-		NumberNode *it = head;
+		head = new NumberNode2(num[0], 1);
+		NumberNode2 *it = head;
 		for (int i = 1; i < num.size(); ++i)
 		{
 			if (it->num_char != num[i])
 			{
 				// 新建一个 char
-				it->next = new NumberNode(num[i], 1);
+				it->next = new NumberNode2(num[i], 1);
 				it = it->next;
 			}
 			else {
@@ -49,7 +49,7 @@ public:
 		}
 
 		// 在这里, 我们用栈的思路去做遍历
-		deque<NumberNode*> s;
+		deque<NumberNode2*> s;
 		// 当前遍历节点
 		it = head;
 		while (k--)
@@ -75,7 +75,7 @@ public:
 		string result = "";
 		while (!s.empty())
 		{
-			NumberNode *front = s.front();
+			NumberNode2 *front = s.front();
 			if (result == "" && front->num_char == '0')
 			{
 				s.pop_front();
