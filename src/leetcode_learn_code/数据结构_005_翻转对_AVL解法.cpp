@@ -190,7 +190,7 @@ void Delete(MyTreeNode *&root, int val)
 	{
 		// 从右边删除
 		Delete(root->right, val);
-		// 因为左边删除了, 所以可能会+1 有可能变成 +2
+		// 因为右边删除了, 所以可能会+1 有可能变成 +2
 		if (GetAVLValue(root) == 2)
 		{
 			if (GetAVLValue(root->left) > 0)
@@ -211,16 +211,28 @@ void Delete(MyTreeNode *&root, int val)
 		// 找到要删除的节点, 但是这个节点 左右都有节点
 		// 我们把这个流程改成, 直接从右子树中, 获取最小的一个数据, 进行替换, 再删除右子树的数据
 		MyTreeNode *it = root->right;
-		while (it)
+		while (it->left)
 		{
 			it = it->left;
 		}
 		root->val = it->val;
 		Delete(root->right, root->val); // 删除右子树上的数据
-		// 这一步非常巧妙, 因为已知, root->right 目前是平衡的, 删除它的一个子...子节点
-		// root->right 肯定会做自平衡, 然而 AVL 树的特点就是, 子节点的自平衡, 不会影响到当前父节点
-		// 同理, 因为影响不到, 所以这里的个数要手动减去1
-		--root->node_num;
+		// 这里的操作, 跟删除子树, 是一样的操作
+		// 因为右边删除了, 所以可能会+1 有可能变成 +2
+		if (GetAVLValue(root) == 2)
+		{
+			if (GetAVLValue(root->left) > 0)
+			{
+				RightRotation(root);
+			}
+			else {
+				Left_RightRotation(root);
+			}
+		}
+		else {
+			// 旋转会自动更新 node_num, 非旋转情况补上
+			--root->node_num;
+		}
 	}
 	else {
 		// 找到要删除的节点, 但这个节点只有一个孩子节点, 或者就是叶子节点
@@ -230,7 +242,7 @@ void Delete(MyTreeNode *&root, int val)
 
 	// 注意更新高度
 	if (root)
-		root->height = GetHeight(root);
+		root->height = max(GetHeight(root->left), GetHeight(root->right)) + 1;
 }
 
 // 遍历找复合条件的值
@@ -263,8 +275,23 @@ public:
 	}
 };
 
-// // 测试数据
-// int main()
-// {
-// 	Solution().reversePairs({ 12,3,0,7,0,5 });
-// }
+ // 测试数据
+ int main()
+ {
+ 	// Solution().reversePairs({ 12,3,0,7,0,5 });
+	MyTreeNode *root = nullptr;
+	Insert(root, 3);
+	Insert(root, 2);
+	Insert(root, 4);
+	Insert(root, 1);
+	Delete(root, 3);
+
+	/*MyTreeNode *root = nullptr;
+	Insert(root, 3);
+	Insert(root, 2);
+	Insert(root, 5);
+	Insert(root, 4);
+	Delete(root, 3);*/
+
+	 int break_int = 0;
+ }
