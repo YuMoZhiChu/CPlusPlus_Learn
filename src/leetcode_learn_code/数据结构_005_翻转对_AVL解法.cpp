@@ -236,7 +236,7 @@ void Delete(MyTreeNode *&root, int val)
 	}
 	else {
 		// 找到要删除的节点, 但这个节点只有一个孩子节点, 或者就是叶子节点
-		// 这里直接替换, 不需要考虑 node_num 问题
+		// 这里直接替换, 不需要考虑 node_num 和 height 问题
 		root = (root->left ? root->left : root->right);
 	}
 
