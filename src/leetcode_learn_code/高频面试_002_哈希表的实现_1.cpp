@@ -83,6 +83,10 @@ public:
 				HashTableNode *first = buckets[bucket];
 				while (first) // 串行还没结束时
 				{
+					// 这个过程, 相当于
+					// 从 旧 bucket 链表头 取出第一个
+					// 向 tmp_buckets 新链表头 插入第一个
+
 					// 获得这个 val, 在新的 bucket 中的位置
 					size_t new_bucket = get_bucket_num(first->val, n);
 
