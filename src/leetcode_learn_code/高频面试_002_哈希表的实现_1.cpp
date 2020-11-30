@@ -61,7 +61,7 @@ public:
 	}
 
 	// 取模函数
-	// 坑点, 十分注意, 这里一定要转成 int, 不然一个复数对 size_t 取模, 会导致得到不同的结果
+	// 坑点, 十分注意, 这里一定要转成 int, 不然一个负数对 size_t 取模, 会导致得到不同的结果
 	inline size_t get_bucket_num(const int &val, int n)
 	{
 		int result = val % n;
