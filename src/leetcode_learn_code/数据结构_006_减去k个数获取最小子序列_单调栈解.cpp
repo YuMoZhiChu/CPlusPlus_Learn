@@ -3,8 +3,6 @@
 // 思路, 跟 力扣 402 很像
 // 核心
 // 单调栈
-// 另解
-// 优先队列
 
 #include<vector>
 using std::vector;
