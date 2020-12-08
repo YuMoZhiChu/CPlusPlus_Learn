@@ -276,22 +276,22 @@ public:
 };
 
  // 测试数据
- int main()
- {
- 	// Solution().reversePairs({ 12,3,0,7,0,5 });
-	MyTreeNode *root = nullptr;
-	Insert(root, 3);
-	Insert(root, 2);
-	Insert(root, 4);
-	Insert(root, 1);
-	Delete(root, 3);
+ //int main()
+ //{
+ //	// Solution().reversePairs({ 12,3,0,7,0,5 });
+	//MyTreeNode *root = nullptr;
+	//Insert(root, 3);
+	//Insert(root, 2);
+	//Insert(root, 4);
+	//Insert(root, 1);
+	//Delete(root, 3);
 
-	/*MyTreeNode *root = nullptr;
-	Insert(root, 3);
-	Insert(root, 2);
-	Insert(root, 5);
-	Insert(root, 4);
-	Delete(root, 3);*/
+	///*MyTreeNode *root = nullptr;
+	//Insert(root, 3);
+	//Insert(root, 2);
+	//Insert(root, 5);
+	//Insert(root, 4);
+	//Delete(root, 3);*/
 
-	 int break_int = 0;
- }
+	// int break_int = 0;
+ //}

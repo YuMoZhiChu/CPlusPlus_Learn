@@ -1,37 +1,16 @@
-﻿// 力扣
-// https://leetcode-cn.com/problems/find-the-most-competitive-subsequence/
-// 思路, 跟 力扣 402 很像
-// 核心
-// 单调栈
-// 另解
-// 优先队列
-
-#include<vector>
-using std::vector;
-
+﻿#include<vector>
 #include<stack>
-using std::stack;
+#include<iostream>
+using namespace std;
 
-class Solution {
-public:
-	vector<int> mostCompetitive(vector<int>& nums, int k) {
-		stack<int> st;
-		int pop_num = nums.size() - k; // 最多可以弹出 pop_num 次
-		for (int i = 0; i < nums.size(); ++i)
-		{
-			while (!st.empty() && st.top() > nums[i] && pop_num)
-			{
-				st.pop();
-				--pop_num;
-			}
-			st.push(nums[i]);
-		}
-		vector<int> result(st.size(), 0);
-		for (int i = result.size() - 1; i >= 0; --i)
-		{
-			result[i] = st.top();
-			st.pop();
-		}
-		return vector<int>(result.begin(), result.begin() + k);
-	}
+struct TreeNode_1130 {
+	TreeNode_1130():left(nullptr),right(nullptr){}
+	TreeNode_1130 *left;
+	TreeNode_1130 *right;
 };
+
+//int main()
+//{
+//	TreeNode_1130 a;
+//	cout << (a.left == a.right) << endl;
+//}
