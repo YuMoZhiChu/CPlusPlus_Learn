@@ -1,16 +1,4 @@
-﻿#include<iostream>
-#include<string>
-#include<vector>
-#include<unordered_map>
-#include<queue>
-#include<set>
-#include<map>
-#include<algorithm>
-#include<numeric>
-
-using namespace std;
-
-// 力扣
+﻿// 力扣
 // https://leetcode-cn.com/problems/find-minimum-time-to-finish-all-jobs/
 // 标准的动归思路
 // 需要将 jobs -> 2^12 的思路
@@ -20,7 +8,7 @@ using std::vector;
 
 class Solution {
 public:
-	int minimumTimeRequired(vector<int> jobs, int k) {
+	int minimumTimeRequired(vector<int>& jobs, int k) {
 		int n = jobs.size();
 		// 我们用 2^n 来表示 jobs 的完成情况
 
@@ -72,8 +60,3 @@ public:
 
 	}
 };
-int main()
-{
-
-	cout << Solution().minimumTimeRequired({ 3,2,3 }, 3);
-}
