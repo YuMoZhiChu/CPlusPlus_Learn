@@ -6,6 +6,10 @@
 #include<vector>
 using std::vector;
 
+#include<algorithm>
+using std::max;
+using std::min;
+
 class Solution {
 public:
 	int minimumTimeRequired(vector<int>& jobs, int k) {

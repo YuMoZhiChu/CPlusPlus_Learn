@@ -1,7 +1,7 @@
 ﻿// 力扣
 // https://leetcode-cn.com/problems/minimum-window-substring/
 // 学习
-// https://labuladong.gitbook.io/algo/shu-ju-jie-gou-xi-lie/2.5-shou-ba-shou-shua-shu-zu-ti-mu/hua-dong-chuang-kou-ji-qiao-jin-jie
+// https://labuladong.gitbook.io/algo/shu-ju-jie-gou-xi-lie/shou-ba-shou-shua-shu-zu-ti-mu/hua-dong-chuang-kou-ji-qiao-jin-jie#yi-zui-xiao-fu-gai-zi-chuan
 // 滑动窗口技巧
 
 #include<vector>
