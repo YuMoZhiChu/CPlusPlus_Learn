@@ -1,5 +1,5 @@
-﻿#include<iostream>
-#include<string>
+﻿//#include<iostream>
+//#include<string>
 //#include<vector>
 //#include<unordered_map>
 //#include<queue>
@@ -7,22 +7,32 @@
 //#include<map>
 //#include<algorithm>
 //#include<numeric>
+
 using namespace std;
 
-
-#define X(...)
-
-X(a, b, 1231, xxxx, 中文)
-enum OKTYPE {
-	OK,
-	NOT_OK
+class A {
+public:
+	virtual void f(){}
+	int a;
 };
 
+class B : virtual public A{
+public:
+	virtual void f() override {}
+	int b;
+};
+
+class C : public virtual A{};
+
+class D : public B, C{};
 
 int main()
 {
-	OK;
-	int a = OK;
-	int bk = 1;
+	int b_size = sizeof B;
+
+	D d;
+	int d_size = sizeof D;
+
+	int bk = 0;
 }
 
