@@ -33,6 +33,10 @@ int main()
 	D d;
 	int d_size = sizeof D;
 
+	//auto p = A::f;
+	auto ref_p = &A::f;
+
+
 	int bk = 0;
 }
 
