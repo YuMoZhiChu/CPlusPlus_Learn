@@ -9,8 +9,8 @@ using std::vector;
 class Solution {
 public:
 	int waysToSplit(vector<int>& nums) {
-		const int M = 1e9 + 7;
-		int n = nums.size();
+		const int M = int(1e9 + 7);
+		int n = int(nums.size());
 		// 前缀和
 		vector<int> pre_sum(n + 1, 0);
 		pre_sum[0] = 0;

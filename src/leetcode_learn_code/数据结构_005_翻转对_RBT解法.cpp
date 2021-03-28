@@ -353,7 +353,7 @@ public:
 		if (nums.size() <= 1) return 0;
 		int result = 0;
 		MyRBTree tree;
-		for (int i = nums.size() - 1; i >= 0; --i)
+		for (int i = int(nums.size()) - 1; i >= 0; --i)
 		{
 			// 使用普通的树-也会超时
 			result += FindIfBigger(tree.Root, nums[i]);

@@ -14,7 +14,7 @@ class Solution {
 public:
 	vector<int> mostCompetitive(vector<int>& nums, int k) {
 		stack<int> st;
-		int pop_num = nums.size() - k; // 最多可以弹出 pop_num 次
+		int pop_num = int(nums.size()) - k; // 最多可以弹出 pop_num 次
 		for (int i = 0; i < nums.size(); ++i)
 		{
 			while (!st.empty() && st.top() > nums[i] && pop_num)
@@ -25,7 +25,7 @@ public:
 			st.push(nums[i]);
 		}
 		vector<int> result(st.size(), 0);
-		for (int i = result.size() - 1; i >= 0; --i)
+		for (int i = int(result.size()) - 1; i >= 0; --i)
 		{
 			result[i] = st.top();
 			st.pop();
