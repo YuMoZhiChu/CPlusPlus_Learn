@@ -29,13 +29,12 @@ void TestRun()
 {
 	TestThread1();
 }
-
-int main()
-{
-	// TestRun();
-
-
-	bool a = false;
-	bool b = !!a;
-	int bk = 1;
-}
+//int main()
+//{
+//	// TestRun();
+//
+//
+//
+//
+//	int bk = 1;
+//}
