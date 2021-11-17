@@ -52,13 +52,13 @@ A f2()
 	return a3;
 }
 
-int main()
-{
-	A a1;
-	a1.num = 2000;
-	A a2;
-	a2 = std::move(a1);
-	f(a1);
-
-	int bk = 1;
-}
+//int main()
+//{
+//	A a1;
+//	a1.num = 2000;
+//	A a2;
+//	a2 = std::move(a1);
+//	f(a1);
+//
+//	int bk = 1;
+//}
