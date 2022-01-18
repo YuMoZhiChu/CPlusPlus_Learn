@@ -27,11 +27,11 @@ enum : uint8
 	Field_16			= 0001,
 	Field_32			= 0002,
 	Field_64			= 0003,
-#if PLATFORM_64BITS
-	Field_Ptr			= Field_64,
-#else
+//#if PLATFORM_64BITS
+//	Field_Ptr			= Field_64,
+//#else
 	Field_Ptr			= Field_32,
-#endif
+//#endif
 
 	/* Specials */
 	Field_SpecialMask	= 0030,

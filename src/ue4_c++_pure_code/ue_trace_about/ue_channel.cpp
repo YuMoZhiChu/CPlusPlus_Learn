@@ -1,5 +1,6 @@
 ﻿#include "ue_channel.h"
 #include "string.h"
+#include "Atomic.h"
 
 
 namespace Trace {
@@ -57,4 +58,22 @@ namespace Trace {
 		return Len;
 	}
 	///////////////////////////////////////////////////////////////////////////////
+
+	FChannel::Iter::~Iter()
+	{
+		if (Inner[2] == nullptr)
+		{
+			return;
+		}
+
+		/*for (auto* Node = (FChannel*)Inner[2];; PlatformYield())
+		{
+			Node->Next = AtomicLoadRelaxed(&GHeadChannel);
+			if (AtomicCompareExchangeRelaxed(&GHeadChannel, (FChannel*)Inner[1], Node->Next))
+			{
+				break;
+			}
+		}*/
+	}
+
 };

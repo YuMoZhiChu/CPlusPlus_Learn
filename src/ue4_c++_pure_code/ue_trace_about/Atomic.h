@@ -114,7 +114,7 @@ int main()
 
 CAS(Compare and Swap)
 是个原子操作，保证了如果需要更新的地址没有被他人改动多，那么它可以安全的写入。
-而这也是我们对于某个数据或者数据结构加锁要保护的内容，保证读写的一致性，不出现dirty data。
+而这也是我们对于某个数据或者数据结构加锁要保护的内容，保证读写的一致性，不出现dirty data.
 现在几乎所有的CPU指令都支持CAS的原子操作。
 
 compare_exchange_weak 
@@ -123,7 +123,6 @@ weak 版和 strong 版的区别：
 weak 版本的 CAS 允许偶然出乎意料的返回（比如在字段值和期待值一样的时候却返回了 false ），不过在一些循环算法中，这是可以接受的。通常它比起 strong 有更高的性能。
 
 */
-
 ////////////////////////////////////////////////////////////////////////////////
 template <typename Type>
 inline bool AtomicCompareExchangeRelaxed(Type volatile* Target, Type New, Type Expected)

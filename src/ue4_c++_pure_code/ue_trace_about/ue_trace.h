@@ -1,4 +1,6 @@
-﻿#pragma once
+﻿// 这里是 macro 定义
+
+#pragma once
 
 namespace Trace
 {
@@ -86,7 +88,7 @@ static F##ChannelName##Registrator ChannelName##Reg = F##ChannelName##Registrato
 	LinkageType TRACE_PRIVATE_EVENT_DEFINE(LoggerName, EventName) \
 		这是根据 LinkageType 做一次 Trace::Private::FEventNode 的定义
 	struct F##LoggerName##EventName##Fields \
-		这是一个复合 XXXFields 的 Struct
+		这是一个复合 XXXFields 的 Struct, 表示的是 多个字段(TField) 的集合
 	{ \
 		enum \
 		{ \
@@ -98,6 +100,7 @@ static F##ChannelName##Registrator ChannelName##Reg = F##ChannelName##Registrato
 		}; \
 		enum : bool { bIsImportant = ((0, ##__VA_ARGS__) & Important) != 0, }; \
 		static constexpr uint32 GetSize() { return decltype(EventProps_Private)::Size; } \
+		大小直接是用 Trace::EventProps 计算得到来获取
 		static uint32 GetUid() { static uint32 Uid = 0; return (Uid = Uid ? Uid : Initialize()); } \
 		static uint32 FORCENOINLINE Initialize() \
 		{ \
@@ -196,7 +199,7 @@ static F##ChannelName##Registrator ChannelName##Reg = F##ChannelName##Registrato
 	};
 
 
-// 简化写一些判断, 其中
+// 简化代码宏, 
 /*
 #define TRACE_PRIVATE_LOG_PRELUDE(EnterFunc, LoggerName, EventName, ChannelsExpr, ...) \
 	EnterFunc 是一个可执行的函数，参数是 ...
@@ -212,6 +215,25 @@ static F##ChannelName##Registrator ChannelName##Reg = F##ChannelName##Registrato
 			if (const auto& __restrict EventName = *(F##LoggerName##EventName##Fields*)LogScope.GetPointer())
 
 
-// LogScope 做递增
+// 简化代码宏, LogScope 做递增
 #define TRACE_PRIVATE_LOG_EPILOG() \
 				LogScope += LogScope
+
+// 简化代码宏,
+#define TRACE_PRIVATE_LOG(LoggerName, EventName, ChannelsExpr, ...) \
+	TRACE_PRIVATE_LOG_PRELUDE(Enter, LoggerName, EventName, ChannelsExpr, ##__VA_ARGS__) \
+		TRACE_PRIVATE_LOG_EPILOG()
+
+// 简化代码宏,
+#define TRACE_PRIVATE_LOG_SCOPED(LoggerName, EventName, ChannelsExpr, ...) \
+	Trace::Private::FScopedLogScope PREPROCESSOR_JOIN(TheScope, __LINE__); \
+	TRACE_PRIVATE_LOG_PRELUDE(ScopedEnter, LoggerName, EventName, ChannelsExpr, ##__VA_ARGS__) \
+		PREPROCESSOR_JOIN(TheScope, __LINE__).SetActive(), \
+		TRACE_PRIVATE_LOG_EPILOG()
+
+// 简化代码宏,
+#define TRACE_PRIVATE_LOG_SCOPED_T(LoggerName, EventName, ChannelsExpr, ...) \
+	Trace::Private::FScopedStampedLogScope PREPROCESSOR_JOIN(TheScope, __LINE__); \
+	TRACE_PRIVATE_LOG_PRELUDE(ScopedStampedEnter, LoggerName, EventName, ChannelsExpr, ##__VA_ARGS__) \
+		PREPROCESSOR_JOIN(TheScope, __LINE__).SetActive(), \
+		TRACE_PRIVATE_LOG_EPILOG()

@@ -66,7 +66,7 @@ typedef uint16				CHAR16;
 typedef uint32				CHAR32;
 
 // A switchable character. In-memory only. Either ANSICHAR or WIDECHAR, depending on a licensee's requirements.
-typedef WIDECHAR			TCHAR;
+typedef WIDECHAR			TCHAR_UE;
 
 // Unsigned int. The same size as a pointer.
 typedef SelectIntPointerType<uint32, uint64, sizeof(void*)>::TIntPointer UPTRINT;
