@@ -14,7 +14,7 @@ namespace Trace {
 
 	// 这是一个一定会显示的 TraceChannel, 直接用继承并重写两个判断函数实现
 	static FTraceChannel	TraceLogChannelDetail;
-	// 这种引用的写法, 在局部变量中, 确实很方便, 而且一个引用符号, 是存储在 stack 上, 比直接从 静态变量区 存储的 static 要方便, 开销要低很多
+	// 将静态全局变量, 开放给外部使用 代码版本迭代问题
 	FChannel& TraceLogChannel = TraceLogChannelDetail;
 
 	///////////////////////////////////////////////////////////////////////////////

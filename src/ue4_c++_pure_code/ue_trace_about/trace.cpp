@@ -83,8 +83,18 @@ namespace Trace
 		return true;
 	}
 
+	// [TODO] 这一句好像没有, 1 是没用到, 2 是用一个 静态全局变量 就应该是 只在定义的文件中是可见的
 	UE_TRACE_CHANNEL_EXTERN(TraceLogChannel)
 
+	// $Trace 可以作为变量设置进去
+	/*
+	Trace::F$TraceThreadInfoFields
+		SystemId_Field        Trace::TField<0,0,unsigned int>
+		SortHint_Field        Trace::TField<1,4,int>
+		Name_Field            Trace::TField<2,8,enum Trace::AnsiString>
+		EventProps_Private    Trace::TField<259(没用的),8,enum Trace::EventProps>
+		Attachment_Field      Trace::TField<0,8,enum Trace::Attachment>
+	*/
 	UE_TRACE_EVENT_BEGIN($Trace, ThreadInfo)
 	UE_TRACE_EVENT_FIELD(uint32, SystemId)
 	UE_TRACE_EVENT_FIELD(int32, SortHint)
