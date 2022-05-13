@@ -29,6 +29,11 @@ A BuildAObject()
 	return A(1);
 }
 
+inline bool TestAnd()
+{
+	return false && true;
+}
+
 int main()
 {
 	int* x = nullptr;
@@ -39,9 +44,13 @@ int main()
 	int bk = 1;
 	++bk;
 
-	while (true)
+	/*while (true)
 	{
 		++bk;
-	}
+	}*/
 	
+	bool testResult = !TestAnd();
+
+	++bk;
+
 }
