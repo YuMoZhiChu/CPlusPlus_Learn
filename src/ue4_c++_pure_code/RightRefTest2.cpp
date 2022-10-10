@@ -29,9 +29,18 @@ A BuildAObject()
 	return A(1);
 }
 
-inline bool TestAnd()
+
+
+__forceinline bool TestAnd()
 {
-	return false && true;
+	return true || true;
+}
+
+void ChangeTest(int&& right_value)
+{
+	static int TestCount = 0;
+	++TestCount;
+	right_value = TestCount;
 }
 
 int main()
@@ -50,6 +59,15 @@ int main()
 	}*/
 	
 	bool testResult = !TestAnd();
+
+
+	int a = 999;
+	int& a_ref = a;
+	int&& a_right_ref = std::move(a);
+	ChangeTest(std::move(a));
+	ChangeTest(std::move(a_ref));
+	ChangeTest(std::move(a_right_ref));
+
 
 	++bk;
 
